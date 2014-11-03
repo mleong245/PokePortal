@@ -40,3 +40,6 @@ trainer_path(currPkmn.trainer_id).  You pass in that Pokemon's trainer id so tha
 
 Question 5: Explain how putting this line "flash[:error] = @pokemon.errors.full_messages.to_sentence" shows error messages on your form. *
 Hint: Take a look at views/layouts/application.html.erb. What does this file do, and what is it rendering? If you need to learn more about application.html.erb, Google is your friend!
+
+
+application.html.erb renders the front end content that is consistent among the whole app, as opposed to specific to a single page.  This line displays error messages on the form because within application.html.erb, there is a main tag that will dynamically show any messages placed within layouts/messages, to which the error message is added when this line is run.
