@@ -33,6 +33,7 @@ Bobbertu
 
 Question 4: What did you pass into the redirect_to? If it is a path, what did that path need? If it is not a path, why is it okay not to have a path here? *
 
+trainer_path(currPkmn.trainer_id).  You pass in that Pokemon's trainer id so that you can redirect to that Pokemon's trainer's profile page.
 
 
 
