@@ -6,6 +6,7 @@ This error is thrown because the Pokemon model has not been defined yet.
 
 Question 1: How are the random Pokemon appearing? What is the common factor between all the possible Pokemon that appear?
 
+We seeded the database with these default pokemon, and index.html.erb just displays one of those pokemon on the page.  The common factor between all of the possible Pokemon is that there are only 4 possible options, which are the starter pokemon of the first gen: Charmander, Squirtle, Bulbasaur, and Pikachu.
 
 
 
@@ -13,6 +14,7 @@ Question 1: How are the random Pokemon appearing? What is the common factor betw
 Question 2a: What does the following line in the help text do? Be specific about what "capture_path(id: @pokemon)" is doing. If you're having trouble, look at the Help section in the README. *
 <%= button_to "Throw a Pokeball!", capture_path(id: @pokemon), :class => "button medium", :method => :patch %>
 
+Creates button with text labeling it "Throw a Pokeball!"  The button's class is a medium button, and the HTTP method type is patch (updating one field, vs. putting the entire thing).  capture_path(id: @pokemon) redirects to the route '/capture/<id>', passing in id: @pokemon as the parameter to the capture function.
 
 
 
@@ -20,7 +22,7 @@ Question 2a: What does the following line in the help text do? Be specific about
 Question 2b: Change the URI pattern of the capture_path from "capture" to "asdf" in your routes.rb. Try capturing another Pokemon. Why does the route still work? *
 Remember, the URI pattern is the string following the request type in the route. For instance for a route "GET 'pokemons'", the URI pattern is 'pokemons'.
 
-
+It still works because we are routing this URI pattern as 'capture', so Rails can still reference the route internally using capture, even though the URI pattern is asdf.
 
 
 Question 3: What would you name your own Pokemon? *
