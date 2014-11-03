@@ -15,8 +15,10 @@ class PokemonController < ApplicationController
 
 	def heal
 		currPkmn = Pokemon.find(params[:id])
-		currPkmn.health += 10
-		currPkmn.save
+		if currPkmn.trainer_id == current_trainer.id
+			currPkmn.health += 10
+			currPkmn.save
+		end
 		redirect_to trainer_path(currPkmn.trainer_id)
 	end
 

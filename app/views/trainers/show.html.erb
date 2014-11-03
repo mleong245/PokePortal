@@ -8,6 +8,9 @@
 
 
 <h3> Pokemon </h3>
+<% if @pokemon.empty? %>
+	<p> Your party is empty! </p>
+<% end %>
 <% @pokemon.each do |p| %>
 	<% if p.health > 0 %>
 		<h4> <%= p.name %> </h4>
@@ -19,7 +22,9 @@
 
 
 <h3> Pokemon Center </h3>
-<% if @heal_pkmn.empty? %>
+<% if @pokemon.empty? %>
+	<p> Your party is empty! </p>
+<% elsif @heal_pkmn.empty? %>
 	<p> Your Pokemon are all at full health! </p>
 <% else %>
 	<% @heal_pkmn.each do |p| %>
