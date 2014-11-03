@@ -9,8 +9,22 @@
 
 <h3> Pokemon </h3>
 <% @pokemon.each do |p| %>
-	<h4> <%= p.name %> </h4>
-	<p> Level <%= p.level %> </p>
-	<p> Health: <%= p.health %> </p>
-	<%= button_to "Damage!", damage_path(id: p.id), :class => "button medium", :method => :patch %>
+	<% if p.health > 0 %>
+		<h4> <%= p.name %> </h4>
+		<p> Level <%= p.level %> </p>
+		<p> Health: <%= p.health %> </p>
+		<%= button_to "Damage!", damage_path(id: p.id), :class => "button medium", :method => :patch %>
+	<% end %>
+<% end %>
+
+
+<h3> Pokemon Center </h3>
+<% if @heal_pkmn.empty? %>
+	<p> Your Pokemon are all at full health! </p>
+<% else %>
+	<% @heal_pkmn.each do |p| %>
+		<h4> <%= p.name %> </h4>
+		<p> Health: <%= p.health %> </p>
+		<%= button_to "Heal this Pokemon", heal_path(id: p.id), :class => "button medium", :method => :patch %>
+	<% end %>
 <% end %>

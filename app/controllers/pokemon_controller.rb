@@ -9,11 +9,14 @@ class PokemonController < ApplicationController
 	def damage
 		currPkmn = Pokemon.find(params[:id])
 		currPkmn.health -= 10
-		if currPkmn.health <= 0
-			currPkmn.destroy
-		else
-			currPkmn.save
-		end
+		currPkmn.save
+		redirect_to trainer_path(currPkmn.trainer_id)
+	end
+
+	def heal
+		currPkmn = Pokemon.find(params[:id])
+		currPkmn.health += 10
+		currPkmn.save
 		redirect_to trainer_path(currPkmn.trainer_id)
 	end
 
